@@ -14,32 +14,22 @@ describe("friends model", function () {
         beforeEach(async () => {
             await db("friends").truncate();
         });
-
         it("should insert friends into database", async () => {
-
             await Friends.addFriend({ name: "billy" });
             await Friends.addFriend({ name: "zeus" });
-
             const friends = await db("friends");
-
             expect(friends).toHaveLength(2);
         });
-
     });
     describe("deleteFriend", function () {
         beforeEach(async () => {
             await db("friends").truncate();
         });
-
-        it("should insert friends into database", async () => {
-
+        it("should delete friend from database", async () => {
             await Friends.addFriend({ name: "billy" });
             await Friends.addFriend({ name: "zeus" });
             await Friends.deleteFriend(1)
-
-
             const friends = await db("friends");
-
             expect(friends).toHaveLength(1);
         });
     });
